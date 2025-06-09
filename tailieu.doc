@@ -1,0 +1,350 @@
+# ĐỒ ÁN TỐT NGHIỆP
+## ĐẠI HỌC BÁCH KHOA HÀ NỘI
+
+# THIẾT KẾ VÀ XÂY DỰNG WEBSITE BÁN HÀNG THÔNG MINH ỨNG DỤNG CÔNG NGHỆ AI
+
+## PHẦN 1: TỔNG QUAN VỀ ĐỒ ÁN
+
+### 1.1. Giới thiệu
+Trong thời đại công nghệ phát triển mạnh mẽ, các nền tảng thương mại điện tử đã và đang trở thành một phần không thể thiếu trong đời sống của con người. Tuy nhiên, nhiều website bán hàng hiện nay vẫn còn tồn tại những hạn chế về trải nghiệm người dùng, khả năng cá nhân hóa và hiệu quả trong việc đề xuất sản phẩm. Đồ án này tập trung vào việc thiết kế và xây dựng một website bán hàng thông minh ứng dụng công nghệ AI nhằm nâng cao trải nghiệm mua sắm trực tuyến cho người dùng.
+
+### 1.2. Mục tiêu đồ án
+- Xây dựng một nền tảng thương mại điện tử hoàn chỉnh với đầy đủ chức năng cơ bản và nâng cao
+- Tích hợp các công nghệ AI để cá nhân hóa trải nghiệm người dùng
+- Xây dựng hệ thống đề xuất sản phẩm thông minh dựa trên hành vi người dùng
+- Phát triển chatbot hỗ trợ khách hàng tự động
+- Tối ưu hóa quy trình vận hành và quản lý đơn hàng
+- Đảm bảo tính bảo mật và an toàn thông tin
+
+### 1.3. Phạm vi đồ án
+- Phát triển website hoàn chỉnh bao gồm: giao diện người dùng và quản trị viên
+- Xây dựng cơ sở dữ liệu và API backend
+- Tích hợp các giải pháp thanh toán trực tuyến
+- Phát triển các thuật toán AI cho hệ thống đề xuất và hỗ trợ khách hàng
+- Triển khai và kiểm thử hệ thống
+
+## PHẦN 2: PHÂN TÍCH YÊU CẦU HỆ THỐNG
+
+### 2.1. Yêu cầu chức năng
+#### 2.1.1. Chức năng dành cho người dùng chưa đăng nhập
+- Xem danh sách sản phẩm theo danh mục
+- Xem chi tiết sản phẩm
+- Tìm kiếm sản phẩm theo tên, danh mục, khoảng giá
+- Đăng ký tài khoản
+- Đăng nhập hệ thống
+- Thêm sản phẩm vào giỏ hàng
+- Xem các đánh giá của sản phẩm
+
+#### 2.1.2. Chức năng dành cho người dùng đã đăng nhập
+- Tất cả chức năng của người dùng chưa đăng nhập
+- Quản lý thông tin cá nhân
+- Quản lý địa chỉ giao hàng
+- Đặt hàng và thanh toán
+- Theo dõi trạng thái đơn hàng
+- Đánh giá sản phẩm đã mua
+- Nhận đề xuất sản phẩm cá nhân hóa
+- Lưu sản phẩm yêu thích
+- Tương tác với chatbot hỗ trợ
+- Xem lịch sử mua hàng
+
+#### 2.1.3. Chức năng dành cho người bán hàng
+- Quản lý thông tin cửa hàng
+- Quản lý danh mục sản phẩm
+- Thêm, sửa, xóa sản phẩm
+- Quản lý đơn hàng (xác nhận, hủy, xử lý đổi/trả)
+- Xem thống kê doanh thu
+- Quản lý khuyến mãi, giảm giá
+- Phản hồi đánh giá của khách hàng
+- Xem phân tích dữ liệu bán hàng
+
+#### 2.1.4. Chức năng dành cho quản trị viên
+- Quản lý người dùng
+- Quản lý người bán
+- Quản lý danh mục sản phẩm hệ thống
+- Phê duyệt sản phẩm mới
+- Quản lý thanh toán
+- Quản lý báo cáo vi phạm
+- Xem thống kê toàn hệ thống
+- Cấu hình hệ thống
+- Quản lý nội dung quảng cáo
+
+### 2.2. Yêu cầu phi chức năng
+- **Hiệu năng**: Thời gian phản hồi trang < 2 giây, xử lý thanh toán < 5 giây
+- **Khả năng mở rộng**: Hỗ trợ tối thiểu 10,000 người dùng đồng thời
+- **Tính sẵn sàng**: Hệ thống hoạt động 99.9% thời gian
+- **Bảo mật**: Bảo vệ thông tin người dùng, mã hóa dữ liệu thanh toán
+- **Khả năng sử dụng**: Giao diện thân thiện, dễ sử dụng trên nhiều thiết bị
+- **Đa ngôn ngữ**: Hỗ trợ tiếng Việt và tiếng Anh
+- **Khả năng tương thích**: Hoạt động tốt trên các trình duyệt phổ biến
+
+## PHẦN 3: KIẾN TRÚC HỆ THỐNG
+
+### 3.1. Kiến trúc tổng quan
+Website bán hàng được thiết kế theo kiến trúc microservices, bao gồm các thành phần chính:
+
+- **Frontend**: Sử dụng React.js, Next.js
+- **Backend API**: Node.js với Express.js hoặc NestJS
+- **Dịch vụ xác thực**: Quản lý đăng nhập, đăng ký, phân quyền
+- **Dịch vụ sản phẩm**: Quản lý thông tin và danh mục sản phẩm
+- **Dịch vụ đơn hàng**: Xử lý đặt hàng, thanh toán
+- **Dịch vụ người dùng**: Quản lý thông tin người dùng
+- **Dịch vụ AI**: Hệ thống đề xuất và chatbot
+- **Dịch vụ thông báo**: Email, SMS, push notification
+- **Dịch vụ tìm kiếm**: Elasticsearch
+
+### 3.2. Cơ sở dữ liệu
+Hệ thống sử dụng kiến trúc cơ sở dữ liệu hỗn hợp:
+- MongoDB: Lưu trữ dữ liệu sản phẩm, đánh giá, người dùng
+- PostgreSQL: Lưu trữ dữ liệu giao dịch, đơn hàng
+- Redis: Cache và quản lý phiên đăng nhập
+- Elasticsearch: Đánh chỉ mục và tìm kiếm sản phẩm
+
+### 3.3. Sơ đồ cơ sở dữ liệu
+#### 3.3.1. Bảng Users (Người dùng)
+- id: string (primary key)
+- email: string (unique)
+- password: string (hashed)
+- fullName: string
+- phoneNumber: string
+- avatar: string
+- role: enum [USER, SELLER, ADMIN]
+- addresses: Array<Address>
+- createdAt: Date
+- updatedAt: Date
+- lastLogin: Date
+- isActive: boolean
+
+#### 3.3.2. Bảng Products (Sản phẩm)
+- id: string (primary key)
+- sellerId: string (foreign key)
+- name: string
+- description: string
+- price: number
+- salePrice: number
+- categories: Array<string>
+- images: Array<string>
+- specifications: Object
+- quantity: number
+- status: enum [ACTIVE, INACTIVE, PENDING]
+- createdAt: Date
+- updatedAt: Date
+- rating: number
+- reviewCount: number
+- attributes: Object
+
+#### 3.3.3. Bảng Orders (Đơn hàng)
+- id: string (primary key)
+- userId: string (foreign key)
+- items: Array<OrderItem>
+- totalAmount: number
+- shippingAddress: Address
+- paymentMethod: string
+- paymentStatus: enum [PENDING, PAID, FAILED]
+- orderStatus: enum [PENDING, CONFIRMED, SHIPPING, DELIVERED, CANCELLED]
+- createdAt: Date
+- updatedAt: Date
+- shippingFee: number
+- discount: number
+- note: string
+
+#### 3.3.4. Bảng Reviews (Đánh giá)
+- id: string (primary key)
+- userId: string (foreign key)
+- productId: string (foreign key)
+- orderId: string (foreign key)
+- rating: number
+- comment: string
+- images: Array<string>
+- createdAt: Date
+- updatedAt: Date
+- isVerified: boolean
+
+#### 3.3.5. Bảng Categories (Danh mục)
+- id: string (primary key)
+- name: string
+- description: string
+- parentId: string (foreign key, self-reference)
+- image: string
+- status: boolean
+- createdAt: Date
+- updatedAt: Date
+
+### 3.4. Luồng xử lý chính
+1. **Luồng đăng ký/đăng nhập**:
+   - Người dùng nhập thông tin đăng ký
+   - Hệ thống xác thực email
+   - Tạo tài khoản và cấp JWT token
+   - Lưu thông tin người dùng vào cơ sở dữ liệu
+
+2. **Luồng mua hàng**:
+   - Người dùng duyệt và tìm kiếm sản phẩm
+   - Thêm sản phẩm vào giỏ hàng
+   - Tiến hành thanh toán
+   - Hệ thống xác nhận đơn hàng
+   - Người bán xử lý đơn hàng
+   - Giao hàng và cập nhật trạng thái
+   - Người dùng đánh giá sản phẩm
+
+3. **Luồng đề xuất sản phẩm**:
+   - Thu thập dữ liệu hành vi người dùng
+   - Phân tích dữ liệu và tạo profile người dùng
+   - Ứng dụng thuật toán đề xuất
+   - Hiển thị sản phẩm đề xuất cho người dùng
+
+## PHẦN 4: THIẾT KẾ GIAO DIỆN NGƯỜI DÙNG
+
+### 4.1. Wireframe và Mockup
+Đồ án bao gồm thiết kế chi tiết cho các trang chính:
+- Trang chủ
+- Trang danh mục sản phẩm
+- Trang chi tiết sản phẩm
+- Trang giỏ hàng
+- Trang thanh toán
+- Trang quản lý tài khoản
+- Trang đăng nhập/đăng ký
+- Trang quản trị cho người bán và admin
+
+### 4.2. Thiết kế responsive
+- Thiết kế áp dụng nguyên tắc Mobile First
+- Hỗ trợ tối ưu trên các thiết bị: điện thoại, máy tính bảng, máy tính để bàn
+- Sử dụng CSS Grid và Flexbox để đảm bảo layout linh hoạt
+
+### 4.3. Trải nghiệm người dùng (UX)
+- Tối ưu hóa quy trình mua hàng giảm thiểu số bước
+- Triển khai tìm kiếm và lọc sản phẩm thông minh
+- Thiết kế giao diện đơn giản, dễ sử dụng
+- Hiển thị rõ ràng thông tin sản phẩm và đánh giá
+- Tối ưu hóa tốc độ tải trang
+
+## PHẦN 5: TRIỂN KHAI CÔNG NGHỆ AI
+
+### 5.1. Hệ thống đề xuất sản phẩm
+#### 5.1.1. Thu thập dữ liệu
+- Dữ liệu tường minh: đánh giá, lượt thích, mua hàng
+- Dữ liệu ngầm: thời gian xem, lịch sử tìm kiếm, click hành vi
+
+#### 5.1.2. Các thuật toán đề xuất
+- **Collaborative Filtering**: Dựa trên hành vi tương tự giữa các người dùng
+  - User-based: Đề xuất sản phẩm từ người dùng có sở thích tương tự
+  - Item-based: Đề xuất sản phẩm tương tự với sản phẩm đã xem/mua
+  
+- **Content-based Filtering**: Dựa trên nội dung và thuộc tính sản phẩm
+  - Phân tích đặc điểm sản phẩm (danh mục, thương hiệu, giá cả)
+  - Xây dựng profile sở thích người dùng
+  
+- **Hybrid Approach**: Kết hợp cả hai phương pháp trên
+  - Sử dụng mô hình ma trận hóa (Matrix Factorization)
+  - Ứng dụng Deep Learning với mô hình Neural Collaborative Filtering
+
+#### 5.1.3. Đánh giá hiệu quả
+- Precision@K
+- Recall@K
+- F1-Score
+- NDCG (Normalized Discounted Cumulative Gain)
+- A/B Testing
+
+### 5.2. Chatbot hỗ trợ khách hàng
+#### 5.2.1. Kiến trúc chatbot
+- Natural Language Processing (NLP) với BERT hoặc GPT
+- Intent Recognition để phân loại ý định người dùng
+- Entity Recognition để trích xuất thông tin
+- Dialog Management để quản lý luồng hội thoại
+
+#### 5.2.2. Chức năng chatbot
+- Trả lời câu hỏi thường gặp
+- Hỗ trợ tìm kiếm sản phẩm
+- Kiểm tra trạng thái đơn hàng
+- Hướng dẫn quy trình đổi/trả
+- Cung cấp thông tin khuyến mãi
+- Chuyển tiếp đến nhân viên hỗ trợ khi cần
+
+#### 5.2.3. Huấn luyện và cải thiện
+- Huấn luyện ban đầu với dữ liệu FAQ
+- Học tăng cường từ tương tác thực tế
+- Đánh giá và cải thiện liên tục
+
+### 5.3. Phân tích hành vi người dùng
+#### 5.3.1. Customer Segmentation
+- Phân loại khách hàng theo hành vi mua sắm
+- Phân tích RFM (Recency, Frequency, Monetary)
+- Tạo các nhóm khách hàng để tiếp thị hiệu quả
+
+#### 5.3.2. Dự đoán churn rate
+- Xác định khách hàng có nguy cơ ngừng sử dụng dịch vụ
+- Áp dụng các biện pháp giữ chân khách hàng
+- Tối ưu hóa chiến lược tiếp thị
+
+#### 5.3.3. Phân tích giỏ hàng
+- Xác định các sản phẩm thường được mua cùng nhau
+- Đề xuất cross-selling và up-selling
+- Tối ưu hóa bố trí sản phẩm
+
+## PHẦN 6: TRIỂN KHAI VÀ KIỂM THỬ
+
+### 6.1. Môi trường phát triển
+- **Frontend**: React.js 18, Next.js 13, TypeScript, Tailwind CSS
+- **Backend**: Node.js 18, Express.js/NestJS, TypeScript
+- **Database**: MongoDB Atlas, PostgreSQL, Redis
+- **CI/CD**: GitHub Actions, Docker, Kubernetes
+- **Cloud**: AWS/GCP
+
+### 6.2. Kế hoạch kiểm thử
+#### 6.2.1. Unit Testing
+- Jest cho Frontend và Backend
+- Kiểm thử các service, controller, component
+
+#### 6.2.2. Integration Testing
+- Supertest cho API testing
+- Kiểm tra tương tác giữa các service
+
+#### 6.2.3. End-to-End Testing
+- Cypress/Playwright cho testing giao diện
+- Kiểm tra các luồng chính của hệ thống
+
+#### 6.2.4. Performance Testing
+- JMeter/k6 cho load testing
+- Lighthouse cho web performance
+
+### 6.3. Kế hoạch triển khai
+- Triển khai theo phương pháp CI/CD
+- Monitoring với ELK Stack, Prometheus, Grafana
+- Backup và disaster recovery plan
+
+## PHẦN 7: KẾ HOẠCH MỞ RỘNG TƯƠNG LAI
+
+### 7.1. Tích hợp AI nâng cao
+- Computer Vision để nhận diện sản phẩm từ hình ảnh
+- Voice Search và Voice Assistant
+- Personalized Pricing dựa trên hành vi người dùng
+- Dự đoán xu hướng thị trường
+
+### 7.2. Mở rộng tính năng
+- Tích hợp AR/VR để thử sản phẩm ảo
+- Live streaming bán hàng
+- Tích hợp mạng xã hội
+- Chương trình khách hàng thân thiết
+- Marketplace mở rộng
+- Tích hợp app di động native
+
+### 7.3. Quốc tế hóa
+- Hỗ trợ đa ngôn ngữ
+- Đa tiền tệ và phương thức thanh toán quốc tế
+- Tuân thủ quy định pháp lý các khu vực
+
+## PHẦN 8: KẾT LUẬN
+
+Đồ án "Thiết kế và xây dựng website bán hàng thông minh ứng dụng công nghệ AI" đề xuất một giải pháp toàn diện cho việc xây dựng nền tảng thương mại điện tử hiện đại với việc tích hợp các công nghệ AI tiên tiến. Hệ thống được thiết kế với kiến trúc microservices linh hoạt, khả năng mở rộng cao và tập trung vào trải nghiệm người dùng.
+
+Với các tính năng đề xuất sản phẩm thông minh, chatbot hỗ trợ khách hàng và phân tích hành vi người dùng, website không chỉ đáp ứng nhu cầu mua sắm cơ bản mà còn mang lại trải nghiệm cá nhân hóa cho từng khách hàng. Điều này giúp tăng tỷ lệ chuyển đổi, doanh thu và sự hài lòng của khách hàng.
+
+Đồ án cũng đề xuất kế hoạch mở rộng trong tương lai với các công nghệ mới như AR/VR, voice search và các ứng dụng AI nâng cao khác, đảm bảo tính cạnh tranh lâu dài của hệ thống.
+
+## PHỤ LỤC
+
+### Tài liệu tham khảo
+1. Nielsen Norman Group. (2020). E-Commerce User Experience.
+2. Aggarwal, C. C. (2016). Recommender Systems: The Textbook.
+3. Géron, A. (2019). Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow.
+4. Richardson, L., & Ruby, S. (2007). RESTful Web Services.
+5. Fowler, M. (2010). Domain-Specific Languages.
+6. Newman, S. (2021). Building Microservices: Designing Fine-Grained Systems.
